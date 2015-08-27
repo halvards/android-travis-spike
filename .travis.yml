@@ -5,11 +5,30 @@ jdk:
 
 android:
   components:
-    - extra-android-m2repository
-    - build-tools-23
-    - android-23
-    - sys-img-armeabi-v7a-android-19
+    # Use the latest revision of Android SDK Tools
+    - platform-tools
+    - tools
 
+    # The BuildTools version used by the project
+    - build-tools-23
+
+    # The SDK version used to compile the project
+    - android-23
+
+    # Additional components
+    - extra-android-m2repository
+    - extra-google-google_play_services
+    - extra-google-m2repository
+
+    # Specify at least one system image to run emulator(s) during your tests
+    - sys-img-armeabi-v7a-android-19
+    #- sys-img-x86-android-19
+
+  licenses:
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+
+# Emulator Management: Create, Start and Wait
 before_script:
   - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
@@ -17,7 +36,7 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew clean test connectedCheck
+  - ./gradlew clean build connectedCheck
 
 notifications:
   email: false
