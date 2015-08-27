@@ -2,6 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--<style name="AppTheme" parent="android:Theme.Holo"> pre API 21-->
         <!-- Customize your theme here. -->
     </style>
 
