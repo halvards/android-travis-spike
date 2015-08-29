@@ -37,12 +37,12 @@ dependencies {
 
     androidTestCompile 'com.android.support:support-annotations:22.2.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2'
+//    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2'
     androidTestCompile 'com.android.support.test:runner:0.3'
     androidTestCompile 'com.android.support.test:rules:0.3'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
-    testCompile 'org.apache.maven:maven-ant-tasks:2.1.3' // fixes issue on linux/mac
     testCompile 'org.robolectric:robolectric:3.0'
+    testCompile 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:2.0'
 }
