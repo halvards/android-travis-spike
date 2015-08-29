@@ -37,7 +37,7 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew clean build connectedCheck
+  - ./gradlew --no-daemon clean build connectedCheck
 
 notifications:
   email: false
