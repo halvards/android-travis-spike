@@ -1,19 +1,21 @@
 package com.skogsrud.halvard.androidtraviscispike;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
+    private final Fragment homeFragment = new HomeFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,44 +23,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        closeDrawerWhenTappingOutside(drawerLayout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, null, R.string.openNavigationDrawer, R.string.closeNavigationDrawer);
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         enableNavigateToMenuItem(navigationView);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.actions_menu_hello_world, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actions_menu, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else {
-                    drawerLayout.openDrawer(GravityCompat.START);
-                }
+                toggleNavigationDrawer();
+                return true;
+            case R.id.action_settings:
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void closeDrawerWhenTappingOutside(final DrawerLayout drawerLayout) {
-        drawerLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                drawerLayout.closeDrawers();
-                return true;
-            }
-        });
+    private void toggleNavigationDrawer() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
     }
 
     private void enableNavigateToMenuItem(NavigationView navigationView) {
@@ -67,7 +66,17 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         menuItem.setChecked(true);
-                        drawerLayout.closeDrawers();
+                        toggleNavigationDrawer();
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_home:
+                                getFragmentManager()
+                                        .beginTransaction()
+                                        .replace(R.id.hello_world_layout, homeFragment)
+                                        .commit();
+                                return true;
+                            case R.id.nav_messages:
+                                Toast.makeText(getApplicationContext(), "messages", Toast.LENGTH_SHORT).show();
+                        }
                         return true;
                     }
                 });

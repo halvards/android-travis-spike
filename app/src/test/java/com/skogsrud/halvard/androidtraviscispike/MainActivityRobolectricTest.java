@@ -11,9 +11,9 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
-public class MyActivityRobolectricTest {
+public class MainActivityRobolectricTest {
     @Test
     public void testRobolectric() throws Exception {
-        assertThat(Robolectric.setupActivity(MyActivity.class), notNullValue());
+        assertThat(Robolectric.setupActivity(MainActivity.class), notNullValue());
     }
 }

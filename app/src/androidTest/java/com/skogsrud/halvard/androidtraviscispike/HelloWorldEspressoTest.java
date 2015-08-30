@@ -15,9 +15,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class HelloWorldActivityEspressoTest {
+public class HelloWorldEspressoTest {
     @Rule
-    public ActivityTestRule<HelloWorldActivity> activityTestRule = new ActivityTestRule<>(HelloWorldActivity.class);
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void testMyActivityShouldSayHelloWorld() throws Exception {
