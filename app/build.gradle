@@ -29,30 +29,39 @@ android {
     }
 }
 
+def androidSupportVersion = '22.2.1'
+def playServicesVersion = '7.8.0'
+def okhttpVersion = '2.4.0'
+def picassoVersion = '2.4.0'
+def espressoVersion = '2.2'
+def accessibilityTestFrameworkVersion = '2.0'
+def junitVersion = '4.12'
+def hamcrestVersion = '1.3'
+def robolectricVersion = '3.0'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:design:22.2.1'
-    compile 'com.android.support:support-annotations:22.2.1'
-//    compile 'com.google.android.gms:play-services:7.8.0'
-//    compile 'com.google.android.gms:play-services-location:7.8.0'
-//    compile 'com.google.android.gms:play-services-maps:7.8.0'
-//    compile 'com.squareup.okhttp:okhttp:2.4.0'
-//    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile "com.android.support:appcompat-v7:${androidSupportVersion}"
+    compile "com.android.support:cardview-v7:${androidSupportVersion}"
+    compile "com.android.support:design:${androidSupportVersion}"
+    compile "com.android.support:recyclerview-v7:${androidSupportVersion}"
+    compile "com.android.support:support-annotations:${androidSupportVersion}"
+//    compile "com.google.android.gms:play-services:${playServicesVersion}"
+//    compile "com.google.android.gms:play-services-location:${playServicesVersion}"
+//    compile "com.google.android.gms:play-services-maps:${playServicesVersion}"
+//    compile "com.squareup.okhttp:okhttp:${okhttpVersion}"
+//    compile "com.squareup.picasso:picasso:${picassoVersion}"
 
-    androidTestCompile 'com.android.support:support-annotations:22.2.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
-    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2') {
+    androidTestCompile "com.android.support:support-annotations:${androidSupportVersion}"
+    androidTestCompile "com.android.support.test.espresso:espresso-core:${espressoVersion}"
+    androidTestCompile("com.android.support.test.espresso:espresso-contrib:${espressoVersion}") {
         exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
         exclude group: 'com.android.support', module: 'support-v4'
-        exclude module: 'recyclerview-v7'
-//        exclude group: 'com.google.android.apps.common.testing.accessibility.framework'
     }
-    androidTestCompile 'com.android.support.test:runner:0.3'
-    androidTestCompile 'com.android.support.test:rules:0.3'
 
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.hamcrest:hamcrest-library:1.3'
-    testCompile 'org.robolectric:robolectric:3.0'
-    testCompile 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:2.0'
+    testCompile "com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:${accessibilityTestFrameworkVersion}"
+    testCompile "junit:junit:${junitVersion}"
+    testCompile "org.hamcrest:hamcrest-library:${hamcrestVersion}"
+    testCompile "org.robolectric:robolectric:${robolectricVersion}"
 }

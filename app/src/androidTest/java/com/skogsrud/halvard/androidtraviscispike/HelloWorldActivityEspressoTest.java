@@ -15,12 +15,12 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class MyActivityEspressoTest {
+public class HelloWorldActivityEspressoTest {
     @Rule
-    public ActivityTestRule<MyActivity> activityTestRule = new ActivityTestRule<>(MyActivity.class);
+    public ActivityTestRule<HelloWorldActivity> activityTestRule = new ActivityTestRule<>(HelloWorldActivity.class);
 
     @Test
     public void testMyActivityShouldSayHelloWorld() throws Exception {
-        onView(withId(R.id.text)).check(matches(withText("Hello world!")));
+        onView(withId(R.id.hello_world)).check(matches(withText("Hello world!")));
     }
 }
