@@ -5,7 +5,7 @@ android {
     buildToolsVersion '22.0.1'
 
     defaultConfig {
-        applicationId "com.skogsrud.halvard.androidtraviscispike"
+        applicationId 'com.skogsrud.halvard.androidtraviscispike'
         minSdkVersion 19
         targetSdkVersion 22
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
@@ -64,4 +64,14 @@ dependencies {
     testCompile "junit:junit:${junitVersion}"
     testCompile "org.hamcrest:hamcrest-library:${hamcrestVersion}"
     testCompile "org.robolectric:robolectric:${robolectricVersion}"
+}
+
+// Disable animations to speed up and make UI tests more reliable
+task grantAnimationPermission(type: Exec, dependsOn: 'installDebug') {
+    commandLine "adb shell pm grant com.skogsrud.halvard.androidtraviscispike android.permission.SET_ANIMATION_SCALE".split(' ')
+}
+tasks.whenTaskAdded { task ->
+    if (task.name.startsWith('connected')) {
+        task.dependsOn grantAnimationPermission
+    }
 }

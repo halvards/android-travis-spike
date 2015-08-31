@@ -16,17 +16,25 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private final Fragment homeFragment = new HomeFragment();
+    private final Fragment messagesFragment = new MessagesFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getFragmentManager()
+            .beginTransaction()
+            .replace(R.id.content, homeFragment)
+            .commit();
+
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, null, R.string.openNavigationDrawer, R.string.closeNavigationDrawer);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, null, R.string.open, R.string.close);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
@@ -62,23 +70,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void enableNavigateToMenuItem(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        menuItem.setChecked(true);
-                        toggleNavigationDrawer();
-                        switch (menuItem.getItemId()) {
-                            case R.id.nav_home:
-                                getFragmentManager()
-                                        .beginTransaction()
-                                        .replace(R.id.hello_world_layout, homeFragment)
-                                        .commit();
-                                return true;
-                            case R.id.nav_messages:
-                                Toast.makeText(getApplicationContext(), "messages", Toast.LENGTH_SHORT).show();
-                        }
-                        return true;
+            new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(MenuItem menuItem) {
+                    menuItem.setChecked(true);
+                    toggleNavigationDrawer();
+                    switch (menuItem.getItemId()) {
+                        case R.id.nav_home:
+                            getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content, homeFragment)
+                                .commit();
+                            return true;
+                        case R.id.nav_messages:
+                            getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content, messagesFragment)
+                                .commit();
+                            return true;
                     }
-                });
+                    return true;
+                }
+            });
     }
 }
