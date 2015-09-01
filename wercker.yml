@@ -8,8 +8,8 @@ build:
           echo $ANDROID_BUILD_TOOLS
           echo $ANDROID_UPDATE_FILTER
     - android-sdk-update:
-        filter: sys-img-armeabi-v7a-addon-google_apis-google-22
-        #filter: sys-img-armeabi-v7a-android-22
+        #filter: sys-img-armeabi-v7a-addon-google_apis-google-22
+        filter: sys-img-armeabi-v7a-android-22
     - setup-android-emulator:
         target: android-22
     - script:
@@ -19,6 +19,7 @@ build:
   after-steps:
     - script:
         name: inspect build result
+        on: success
         code: |
           ls -al app/build/apk/
           cp app/build/apk/*.apk $WERCKER_REPORT_ARTIFACTS_DIR
