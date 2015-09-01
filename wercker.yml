@@ -4,14 +4,16 @@ build:
     - script:
         name: show base information
         code: |
-          echo $ANDROID_HOME
-          echo $ANDROID_BUILD_TOOLS
-          echo $ANDROID_UPDATE_FILTER
+          uname -a
+          echo ANDROID_HOME=$ANDROID_HOME
+          echo ANDROID_BUILD_TOOLS=$ANDROID_BUILD_TOOLS
+          echo ANDROID_UPDATE_FILTER=$ANDROID_UPDATE_FILTER
     - android-sdk-update:
-        #filter: sys-img-armeabi-v7a-addon-google_apis-google-22
-        filter: sys-img-armeabi-v7a-android-22
+        filter: sys-img-armeabi-v7a-addon-google_apis-google-22
+        #filter: sys-img-armeabi-v7a-android-22
     - setup-android-emulator:
         target: android-22
+        abi: google_apis/armeabi-v7a
     - script:
         name: run ./gradlew clean build connectedCheck
         code: |
