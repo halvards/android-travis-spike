@@ -9,7 +9,6 @@ build:
           echo ANDROID_BUILD_TOOLS=$ANDROID_BUILD_TOOLS
           echo ANDROID_UPDATE_FILTER=$ANDROID_UPDATE_FILTER
           echo ANDROID_EMULATOR_FORCE_32BIT=$ANDROID_EMULATOR_FORCE_32BIT
-          android list target
     - android-sdk-update:
         filter: sys-img-armeabi-v7a-addon-google_apis-google-22 # Android 5.1.1 ARM with Google APIs
         #filter: sys-img-armeabi-v7a-android-22 # Android 5.1.1 ARM
@@ -19,6 +18,10 @@ build:
         #filter: sys-img-x86_64-android-22 # Android 5.1.1 x86_64
         #filter: addon-google_apis_x86-google-19 # Android 4.4.4 x86 with Google APIs
         #filter: sys-img-x86-android-19 # Android 4.4.4 x86
+    - script:
+        name: show android targets
+        code: |
+          android list target
     - setup-android-emulator:
         #target: android-22
         #abi: google_apis/armeabi-v7a
