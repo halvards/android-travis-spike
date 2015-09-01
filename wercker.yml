@@ -1,4 +1,4 @@
-box: wercker/android
+box: jacekmarchwicki/android
 build:
   steps:
     - script:
@@ -8,9 +8,10 @@ build:
           echo $ANDROID_BUILD_TOOLS
           echo $ANDROID_UPDATE_FILTER
     - android-sdk-update:
-        filter: sys-img-armeabi-v7a-addon-google_apis-google-23
+        filter: sys-img-armeabi-v7a-addon-google_apis-google-22
+        #filter: sys-img-armeabi-v7a-android-22
     - setup-android-emulator:
-        target: android-23
+        target: android-22
     - script:
         name: run ./gradlew clean build connectedCheck
         code: |
