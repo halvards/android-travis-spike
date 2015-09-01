@@ -25,7 +25,7 @@ build:
         #abi: armeabi-v7a
         #target: Google Inc.:Google APIs (x86 System Image):19
         #abi: default/x86
-        target: Google Inc.:Google APIs:22
+        target: "Google Inc.:Google APIs:22"
         abi: google_apis/armeabi-v7a
     - script:
         name: run ./gradlew clean build connectedCheck
