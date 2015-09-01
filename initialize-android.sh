@@ -38,6 +38,7 @@ if [ ! -e "${INITIALIZATION_FILE}" ]; then
   touch "${INITIALIZATION_FILE}"
 fi
 
+android list target
 echo no | android create avd --force --name test --target "Google Inc.:Google APIs:22" --abi "google_apis/armeabi-v7a"
 emulator -avd test -no-skin -no-audio -no-window &
 ./android-wait-for-emulator.sh
