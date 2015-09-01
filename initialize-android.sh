@@ -18,27 +18,27 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
   android list sdk --all --no-ui --extended
 
   # Use the latest Android SDK tools
-  echo y | android update sdk --all --no-ui --filter platform-tool > /dev/null
-  echo y | android update sdk --all --no-ui --filter tool > /dev/null
+  echo y | android update sdk --all --no-ui --filter platform-tool
+  echo y | android update sdk --all --no-ui --filter tool
 
   # The BuildTools version used by your project
-  echo y | android update sdk --all --no-ui --filter build-tools-22.0.1 > /dev/null
+  echo y | android update sdk --all --no-ui --filter build-tools-22.0.1
 
   # The SDK version used to compile your project
-  echo y | android update sdk --all --no-ui --filter android-22 > /dev/null
+  echo y | android update sdk --all --no-ui --filter android-22
 
   # Install the Extra/Android Support Library
-  echo y | android update sdk --all --no-ui --filter extra-android-support > /dev/null
+  echo y | android update sdk --all --no-ui --filter extra-android-support
 
   # Install the Extra/Google Play Services Library
-  echo y | android update sdk --all --no-ui --filter extra-google-google_play_services > /dev/null
+  echo y | android update sdk --all --no-ui --filter extra-google-google_play_services
 
   # Required to use Gradle or Maven to build your android project
-  echo y | android update sdk --all --no-ui --filter extra-google-m2repository > /dev/null
-  echo y | android update sdk --all --no-ui --filter extra-android-m2repository > /dev/null
+  echo y | android update sdk --all --no-ui --filter extra-google-m2repository
+  echo y | android update sdk --all --no-ui --filter extra-android-m2repository
 
   # Specify at least one system image to run emulator tests
-  echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-22 > /dev/null
+  echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-22
 
   touch "${INITIALIZATION_FILE}"
 #fi
