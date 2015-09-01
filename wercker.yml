@@ -23,7 +23,7 @@ build:
         code: |
           android list target
     - setup-android-emulator:
-        target: android-22
+        target: 3
         abi: google_apis/armeabi-v7a
         #abi: default/armeabi-v7a
         #target: android-19
