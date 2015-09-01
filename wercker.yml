@@ -10,10 +10,10 @@ build:
           echo ANDROID_UPDATE_FILTER=$ANDROID_UPDATE_FILTER
           echo ANDROID_EMULATOR_FORCE_32BIT=$ANDROID_EMULATOR_FORCE_32BIT
     - android-sdk-update:
-        #filter: sys-img-armeabi-v7a-addon-google_apis-google-22 # Android 5.1.1 ARM with Google APIs
+        filter: sys-img-armeabi-v7a-addon-google_apis-google-22 # Android 5.1.1 ARM with Google APIs
         #filter: sys-img-armeabi-v7a-android-22 # Android 5.1.1 ARM
         #filter: addon-google_apis-google-19 # Android 4.4.4 ARM with Google APIs
-        filter: sys-img-armeabi-v7a-android-19 # Android 4.4.4 ARM
+        #filter: sys-img-armeabi-v7a-android-19 # Android 4.4.4 ARM
         #filter: sys-img-x86_64-addon-google_apis-google-22 # Android 5.1.1 x86_64 with Google APIs
         #filter: sys-img-x86_64-android-22 # Android 5.1.1 x86_64
         #filter: addon-google_apis_x86-google-19 # Android 4.4.4 x86 with Google APIs
@@ -21,8 +21,12 @@ build:
     - setup-android-emulator:
         #target: android-22
         #abi: google_apis/armeabi-v7a
-        target: android-19
-        abi: armeabi-v7a
+        #target: android-19
+        #abi: armeabi-v7a
+        #target: Google Inc.:Google APIs (x86 System Image):19
+        #abi: default/x86
+        target: Google Inc.:Google APIs:22
+        abi: google_apis/armeabi-v7a
     - script:
         name: run ./gradlew clean build connectedCheck
         code: |
