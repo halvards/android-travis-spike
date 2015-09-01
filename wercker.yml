@@ -8,6 +8,7 @@ build:
           echo ANDROID_HOME=$ANDROID_HOME
           echo ANDROID_BUILD_TOOLS=$ANDROID_BUILD_TOOLS
           echo ANDROID_UPDATE_FILTER=$ANDROID_UPDATE_FILTER
+          echo ANDROID_EMULATOR_FORCE_32BIT=$ANDROID_EMULATOR_FORCE_32BIT
     - android-sdk-update:
         #filter: sys-img-armeabi-v7a-addon-google_apis-google-22 # Android 5.1.1 ARM with Google APIs
         #filter: sys-img-armeabi-v7a-android-22 # Android 5.1.1 ARM
