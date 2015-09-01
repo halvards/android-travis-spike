@@ -1,0 +1,24 @@
+box: wercker/android
+build:
+  steps:
+    - script:
+        name: show base information
+        code: |
+          echo $ANDROID_HOME
+          echo $ANDROID_BUILD_TOOLS
+          echo $ANDROID_UPDATE_FILTER
+    - android-sdk-update:
+        filter: sys-img-armeabi-v7a-addon-google_apis-google-23
+    - setup-android-emulator:
+        target: android-23
+    - script:
+        name: run ./gradlew clean build connectedCheck
+        code: |
+          ./gradlew --project-cache-dir=$WERCKER_CACHE_DIR clean build connectedCheck
+  after-steps:
+    - script:
+        name: inspect build result
+        code: |
+          ls -al app/build/apk/
+          cp app/build/apk/*.apk $WERCKER_REPORT_ARTIFACTS_DIR
+
