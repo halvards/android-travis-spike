@@ -38,8 +38,10 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
   echo y | android --silent update sdk --all --no-ui --filter extra-android-m2repository
 
   # Specify at least one system image to run emulator tests
-  echo y | android update sdk --all --no-ui --filter addon-google_apis-google-22
-  echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-22 # requires addon-google_apis-google-22
+  #echo y | android update sdk --all --no-ui --filter addon-google_apis-google-22
+  #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-22 # requires addon-google_apis-google-22
+  echo y | android update sdk --all --no-ui --filter addon-google_apis-google-19
+  echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-19 # requires addon-google_apis-google-19
   #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19
 
   touch "${INITIALIZATION_FILE}"
