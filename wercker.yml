@@ -9,6 +9,7 @@ build:
           echo ANDROID_BUILD_TOOLS=$ANDROID_BUILD_TOOLS
           echo ANDROID_UPDATE_FILTER=$ANDROID_UPDATE_FILTER
           echo ANDROID_EMULATOR_FORCE_32BIT=$ANDROID_EMULATOR_FORCE_32BIT
+          $ANDROID_HOME/bin/android list target
     - android-sdk-update:
         filter: sys-img-armeabi-v7a-addon-google_apis-google-22 # Android 5.1.1 ARM with Google APIs
         #filter: sys-img-armeabi-v7a-android-22 # Android 5.1.1 ARM
@@ -25,7 +26,7 @@ build:
         #abi: armeabi-v7a
         #target: Google Inc.:Google APIs (x86 System Image):19
         #abi: default/x86
-        target: "Google Inc.:Google APIs:22"
+        target: 5
         abi: google_apis/armeabi-v7a
     - script:
         name: run ./gradlew clean build connectedCheck
