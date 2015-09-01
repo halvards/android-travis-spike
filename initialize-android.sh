@@ -18,27 +18,29 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
   android list sdk --all --no-ui --extended
 
   # Use the latest Android SDK tools
-  echo y | android update sdk --all --no-ui --filter platform-tool
-  echo y | android update sdk --all --no-ui --filter tool
+  echo y | android --silent update sdk --all --no-ui --filter platform-tool
+  echo y | android --silent update sdk --all --no-ui --filter tool
 
   # The BuildTools version used by your project
-  echo y | android update sdk --all --no-ui --filter build-tools-22.0.1
+  echo y | android --silent update sdk --all --no-ui --filter build-tools-22.0.1
 
   # The SDK version used to compile your project
-  echo y | android update sdk --all --no-ui --filter android-22
+  echo y | android --silent update sdk --all --no-ui --filter android-22
 
   # Install the Extra/Android Support Library
-  echo y | android update sdk --all --no-ui --filter extra-android-support
+  echo y | android --silent update sdk --all --no-ui --filter extra-android-support
 
   # Install the Extra/Google Play Services Library
-  echo y | android update sdk --all --no-ui --filter extra-google-google_play_services
+  echo y | android --silent update sdk --all --no-ui --filter extra-google-google_play_services
 
   # Required to use Gradle or Maven to build your android project
-  echo y | android update sdk --all --no-ui --filter extra-google-m2repository
-  echo y | android update sdk --all --no-ui --filter extra-android-m2repository
+  echo y | android --silent update sdk --all --no-ui --filter extra-google-m2repository
+  echo y | android --silent update sdk --all --no-ui --filter extra-android-m2repository
 
   # Specify at least one system image to run emulator tests
-  echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-22
+  echo y | android update sdk --all --no-ui --filter addon-google_apis-google-22
+  echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-22 # requires addon-google_apis-google-22
+  #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19
 
   touch "${INITIALIZATION_FILE}"
 #fi
