@@ -12,9 +12,12 @@ if [ ! -e "${INITIALIZATION_FILE}" ]; then
   # Fetch and initialize $ANDROID_HOME
   download-android
 
+  # List available SDK components
+  android list sdk --all --extended
+
   # Use the latest Android SDK tools
-  echo y | android update sdk --no-ui --filter platform-tools > /dev/null
-  echo y | android update sdk --no-ui --filter tools > /dev/null
+  echo y | android update sdk --no-ui --filter platform-tool > /dev/null
+  echo y | android update sdk --no-ui --filter tool > /dev/null
 
   # The BuildTools version used by your project
   echo y | android update sdk --no-ui --filter build-tools-22.0.1 --all > /dev/null
