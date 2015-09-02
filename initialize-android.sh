@@ -40,10 +40,10 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
   # Specify at least one system image to run emulator tests
   #echo y | android --silent update sdk --all --no-ui --filter addon-google_apis-google-23
   #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-23 # requires android-23 and addon-google_apis-google-23, includes Google APIs
-  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-23 # requires android-23
-  echo y | android --silent update sdk --all --no-ui --filter android-19
+  echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-23 # requires android-23
+  #echo y | android --silent update sdk --all --no-ui --filter android-19
   #echo y | android --silent update sdk --all --no-ui --filter addon-google_apis-google-19 # requires android-19, includes Google APIs
-  echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19 # requires android-19
+  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19 # requires android-19
 
   touch "${INITIALIZATION_FILE}"
 #fi
