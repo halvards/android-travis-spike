@@ -6,8 +6,8 @@ jdk:
 android:
   components:
     # Use the latest revision of Android SDK Tools
-    #- platform-tools
-    #- tools
+    - platform-tools
+    - tools
 
     # The BuildTools version used by the project
     - build-tools-22.0.1
@@ -38,6 +38,8 @@ before_script:
   - android list sdk --all --no-ui --extended
   - echo ********** Android Targets **********
   - android list target
+  - echo ********** android-wait-for-emulator **********
+  - cat $(which android-wait-for-emulator)
   - echo no | android create avd --force --name test --target "Google Inc.:Google APIs:22" --abi "google_apis/armeabi-v7a"
   #- echo no | android create avd --force --name test --target android-19 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
