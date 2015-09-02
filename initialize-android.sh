@@ -26,6 +26,7 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
 
   # The SDK version used to compile your project
   echo y | android --silent update sdk --all --no-ui --filter android-22
+  echo y | android --silent update sdk --all --no-ui --filter android-19
 
   # Install the Extra/Android Support Library
   echo y | android --silent update sdk --all --no-ui --filter extra-android-support
