@@ -40,15 +40,16 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
   # Specify at least one system image to run emulator tests
   #echo y | android update sdk --all --no-ui --filter addon-google_apis-google-22
   #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-22 # requires addon-google_apis-google-22
-  echo y | android update sdk --all --no-ui --filter addon-google_apis-google-19
-  echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-19 # requires addon-google_apis-google-19
-  #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19
+  #echo y | android update sdk --all --no-ui --filter sys-img-x86_64-addon-google_apis-google-22 # requires addon-google_apis-google-22
+  #echo y | android update sdk --all --no-ui --filter addon-google_apis-google-19 # ARM System Image
+  echo y | android update sdk --all --no-ui --filter addon-google_apis_x86-google-19
 
   touch "${INITIALIZATION_FILE}"
 #fi
 
 android list target
-echo no | android create avd --force --name test --target "Google Inc.:Google APIs:22" --abi "google_apis/armeabi-v7a"
+#echo no | android create avd --force --name test --target "Google Inc.:Google APIs:22" --abi "google_apis/armeabi-v7a"
+echo no | android create avd --force --name test --target "Google Inc.:Google APIs (x86 System Image):19" --abi "default/x86"
 emulator -avd test -no-skin -no-audio -no-window &
 ./android-wait-for-emulator.sh
 adb shell input keyevent 82 &
