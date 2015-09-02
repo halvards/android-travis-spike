@@ -50,8 +50,9 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
 
 android list target
 #echo no | android create avd --force --name test --target "Google Inc.:Google APIs:23" --abi "google_apis/armeabi-v7a"
+echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
 #echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
-echo no | android create avd --force --name test --target "android-19" --abi "default/armeabi-v7a"
+#echo no | android create avd --force --name test --target "android-19" --abi "default/armeabi-v7a"
 emulator -avd test -no-skin -no-audio -no-window &
 ./android-wait-for-emulator.sh
 adb shell input keyevent 82 &

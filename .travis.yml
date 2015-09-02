@@ -43,8 +43,8 @@ before_script:
   - echo ********** Android Targets **********
   - android list target
   #- echo no | android create avd --force --name test --target "Google Inc.:Google APIs:23" --abi "google_apis/armeabi-v7a"
-  - echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
-  #- echo no | android create avd --force --name test --target "android-19" --abi armeabi-v7a
+#  - echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
+  - echo no | android create avd --force --name test --target "android-19" --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
