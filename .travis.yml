@@ -32,7 +32,7 @@ android:
     #- sys-img-armeabi-v7a-addon-google_apis-google-23 # requires android-23 and addon-google_apis-google-23, provides Google APIs
     #- sys-img-armeabi-v7a-android-23 # requires android-23
     - android-19
-    - addon-google_apis_x86-google-19 # requires android-19, provides Google APIs
+    - addon-google_apis-google-19 # requires android-19, provides Google APIs
     #- sys-img-armeabi-v7a-android-19 # requires android-19
 
   # Licenses are automatically accepted by Travis CI
