@@ -44,8 +44,8 @@ android:
 before_script:
   #- echo ********** Android SDKs **********
   #- android list sdk --all --no-ui --extended
-  #- echo ********** Android Targets **********
-  #- android list target
+  - echo ********** Android Targets **********
+  - android list target
   #- echo no | android create avd --force --name test --target "Google Inc.:Google APIs:23" --abi "google_apis/armeabi-v7a"
   #- echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
   - echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
