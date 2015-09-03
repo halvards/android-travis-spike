@@ -44,8 +44,8 @@ android:
 
 # Emulator Management: Create, Start and Wait
 before_script:
-  echo ANDROID_HOME=$ANDROID_HOME
-  echo ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT
+  - echo ANDROID_HOME=$ANDROID_HOME
+  - echo ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT
   #- echo ********** Android SDKs **********
   #- android list sdk --all --no-ui --extended
   - echo ********** Android Targets **********
