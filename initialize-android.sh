@@ -18,34 +18,34 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
   android list sdk --all --no-ui --extended
 
   # Use the latest Android SDK tools
-  echo y | android --silent update sdk --all --no-ui --filter platform-tool
-  echo y | android --silent update sdk --all --no-ui --filter tool
+  echo y | android update sdk --all --no-ui --filter platform-tool > /dev/null
+  echo y | android update sdk --all --no-ui --filter tool > /dev/null
 
   # The BuildTools version used by your project
-  echo y | android --silent update sdk --all --no-ui --filter build-tools-23.0.0
+  echo y | android update sdk --all --no-ui --filter build-tools-23.0.0 > /dev/null
 
   # The SDK version used to compile your project
-  echo y | android --silent update sdk --all --no-ui --filter android-23
+  echo y | android update sdk --all --no-ui --filter android-23 > /dev/null
 
   # Install the Extra/Android Support Library
-  echo y | android --silent update sdk --all --no-ui --filter extra-android-support
+  echo y | android update sdk --all --no-ui --filter extra-android-support > /dev/null
 
   # Install the Extra/Google Play Services Library
-  echo y | android --silent update sdk --all --no-ui --filter extra-google-google_play_services
+  echo y | android update sdk --all --no-ui --filter extra-google-google_play_services > /dev/null
 
   # Required to use Gradle or Maven to build your android project
-  echo y | android --silent update sdk --all --no-ui --filter extra-google-m2repository
-  echo y | android --silent update sdk --all --no-ui --filter extra-android-m2repository
+  echo y | android update sdk --all --no-ui --filter extra-google-m2repository > /dev/null
+  echo y | android update sdk --all --no-ui --filter extra-android-m2repository > /dev/null
 
   # Marshmallow system images
-  #echo y | android --silent update sdk --all --no-ui --filter addon-google_apis-google-23 # Google APIs for Marshmallow, use with sys-img-armeabi-v7a-addon-google_apis-google-23
-  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-23 # System image, requires android-23 and addon-google_apis-google-23, provides Google APIs
-  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-23 # System image, requires android-23
+  #echo y | android update sdk --all --no-ui --filter addon-google_apis-google-23 > /dev/null # Google APIs for Marshmallow, use with sys-img-armeabi-v7a-addon-google_apis-google-23
+  #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-23 > /dev/null # System image, requires android-23 and addon-google_apis-google-23, provides Google APIs
+  #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-23 > /dev/null # System image, requires android-23
 
   # KitKat system images
-  echo y | android --silent update sdk --all --no-ui --filter android-19
-  echo y | android --silent update sdk --all --no-ui --filter addon-google_apis-google-19 # System image, requires android-19, provides Google APIs
-  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19 # System image, requires android-19
+  echo y | android update sdk --all --no-ui --filter android-19 > /dev/null
+  echo y | android update sdk --all --no-ui --filter addon-google_apis-google-19 > /dev/null # System image, requires android-19, provides Google APIs
+  #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19 > /dev/null # System image, requires android-19
 
   touch "${INITIALIZATION_FILE}"
 #fi
@@ -56,6 +56,7 @@ android delete avd --name test || true
 #echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
 echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
 #echo no | android create avd --force --name test --target "android-19" --abi "default/armeabi-v7a"
+android list avd
 emulator -avd test -no-skin -no-audio -no-window &
 ./android-wait-for-emulator.sh
 adb shell input keyevent 82
