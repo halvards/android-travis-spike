@@ -28,13 +28,13 @@ android:
     - extra-google-google_play_services
 
     # Marshmallow emulators
-    - addon-google_apis-google-23 # Google APIs for Marshmallow, use with sys-img-armeabi-v7a-addon-google_apis-google-23
-    - sys-img-armeabi-v7a-addon-google_apis-google-23 # System image, requires android-23 and addon-google_apis-google-23, provides Google APIs
+    #- addon-google_apis-google-23 # Google APIs for Marshmallow, use with sys-img-armeabi-v7a-addon-google_apis-google-23
+    #- sys-img-armeabi-v7a-addon-google_apis-google-23 # System image, requires android-23 and addon-google_apis-google-23, provides Google APIs
     #- sys-img-armeabi-v7a-android-23 # System image, requires android-23
 
     # KitKat emulators
-    #- android-19
-    #- addon-google_apis-google-19 # System image, requires android-19, provides Google APIs
+    - android-19
+    - addon-google_apis-google-19 # System image, requires android-19, provides Google APIs
     #- sys-img-armeabi-v7a-android-19 # System image, requires android-19
 
   # Licenses are automatically accepted by Travis CI
@@ -48,9 +48,9 @@ before_script:
   #- android list sdk --all --no-ui --extended
   - echo ********** Android Targets **********
   - android list target
-  - echo no | android create avd --force --name test --target "Google Inc.:Google APIs:23" --abi "google_apis/armeabi-v7a"
+  #- echo no | android create avd --force --name test --target "Google Inc.:Google APIs:23" --abi "google_apis/armeabi-v7a"
   #- echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
-  #- echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
+  - echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
   #- echo no | android create avd --force --name test --target "android-19" --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator

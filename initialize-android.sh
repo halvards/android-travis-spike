@@ -37,22 +37,24 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
   echo y | android --silent update sdk --all --no-ui --filter extra-google-m2repository
   echo y | android --silent update sdk --all --no-ui --filter extra-android-m2repository
 
-  # Specify at least one system image to run emulator tests
-  #echo y | android --silent update sdk --all --no-ui --filter addon-google_apis-google-23
-  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-23 # requires android-23 and addon-google_apis-google-23, includes Google APIs
-  echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-23 # requires android-23
-  #echo y | android --silent update sdk --all --no-ui --filter android-19
-  #echo y | android --silent update sdk --all --no-ui --filter addon-google_apis-google-19 # requires android-19, includes Google APIs
-  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19 # requires android-19
+  # Marshmallow system images
+  #echo y | android --silent update sdk --all --no-ui --filter addon-google_apis-google-23 # Google APIs for Marshmallow, use with sys-img-armeabi-v7a-addon-google_apis-google-23
+  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-23 # System image, requires android-23 and addon-google_apis-google-23, provides Google APIs
+  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-23 # System image, requires android-23
+
+  # KitKat system images
+  echo y | android --silent update sdk --all --no-ui --filter android-19
+  echo y | android --silent update sdk --all --no-ui --filter addon-google_apis-google-19 # System image, requires android-19, provides Google APIs
+  #echo y | android --silent update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19 # System image, requires android-19
 
   touch "${INITIALIZATION_FILE}"
 #fi
 
 android list target
 #echo no | android create avd --force --name test --target "Google Inc.:Google APIs:23" --abi "google_apis/armeabi-v7a"
-echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
-#echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
+#echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
+echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
 #echo no | android create avd --force --name test --target "android-19" --abi "default/armeabi-v7a"
 emulator -avd test -no-skin -no-audio -no-window &
 ./android-wait-for-emulator.sh
-adb shell input keyevent 82 &
+adb shell input keyevent 82
