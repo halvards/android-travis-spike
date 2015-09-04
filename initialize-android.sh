@@ -49,14 +49,14 @@ INITIALIZATION_FILE="$ANDROID_HOME/.initialized-dependencies-$(git log -n 1 --fo
   #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-22 > /dev/null # System image, requires android-22
 
   # API 21 (5.0.x) system images
-  echo y | android update sdk --all --no-ui --filter android-21 > /dev/null
-  echo y | android update sdk --all --no-ui --filter addon-google_apis-google-21 > /dev/null # Google APIs, use with sys-img-armeabi-v7a-addon-google_apis-google-21
-  echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-21 > /dev/null # System image, requires android-21 and addon-google_apis-google-21, provides Google APIs
+  #echo y | android update sdk --all --no-ui --filter android-21 > /dev/null
+  #echo y | android update sdk --all --no-ui --filter addon-google_apis-google-21 > /dev/null # Google APIs, use with sys-img-armeabi-v7a-addon-google_apis-google-21
+  #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-addon-google_apis-google-21 > /dev/null # System image, requires android-21 and addon-google_apis-google-21, provides Google APIs
   #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-21 > /dev/null # System image, requires android-21
 
   # API 19 (4.4.x) system images
-  #echo y | android update sdk --all --no-ui --filter android-19 > /dev/null
-  #echo y | android update sdk --all --no-ui --filter addon-google_apis-google-19 > /dev/null # System image, requires android-19, provides Google APIs
+  echo y | android update sdk --all --no-ui --filter android-19 > /dev/null
+  echo y | android update sdk --all --no-ui --filter addon-google_apis-google-19 > /dev/null # System image, requires android-19, provides Google APIs
   #echo y | android update sdk --all --no-ui --filter sys-img-armeabi-v7a-android-19 > /dev/null # System image, requires android-19
 
   touch "${INITIALIZATION_FILE}"
@@ -68,9 +68,9 @@ android delete avd --name test || true
 #echo no | android create avd --force --name test --target "android-23" --abi "default/armeabi-v7a"
 #echo no | android create avd --force --name test --target "Google Inc.:Google APIs:22" --abi "google_apis/armeabi-v7a"
 #echo no | android create avd --force --name test --target "android-22" --abi "default/armeabi-v7a"
-echo no | android create avd --force --name test --target "Google Inc.:Google APIs:21" --abi "google_apis/armeabi-v7a"
+#echo no | android create avd --force --name test --target "Google Inc.:Google APIs:21" --abi "google_apis/armeabi-v7a"
 #echo no | android create avd --force --name test --target "android-21" --abi "default/armeabi-v7a"
-#echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
+echo no | android create avd --force --name test --target "Google Inc.:Google APIs:19" --abi "default/armeabi-v7a"
 #echo no | android create avd --force --name test --target "android-19" --abi "default/armeabi-v7a"
 android list avd
 emulator -avd test -no-skin -no-audio -no-window &
