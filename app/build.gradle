@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId 'com.skogsrud.halvard.androidtraviscispike'
-        minSdkVersion 19
+        minSdkVersion 10
         targetSdkVersion 23
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         versionCode 1

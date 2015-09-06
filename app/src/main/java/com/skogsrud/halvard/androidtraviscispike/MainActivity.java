@@ -1,8 +1,8 @@
 package com.skogsrud.halvard.androidtraviscispike;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -10,7 +10,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getFragmentManager()
+        getSupportFragmentManager()
             .beginTransaction()
             .replace(R.id.content, homeFragment)
             .commit();
@@ -77,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
                     toggleNavigationDrawer();
                     switch (menuItem.getItemId()) {
                         case R.id.nav_home:
-                            getFragmentManager()
+                            getSupportFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.content, homeFragment)
                                 .commit();
                             return true;
                         case R.id.nav_messages:
-                            getFragmentManager()
+                            getSupportFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.content, messagesFragment)
                                 .commit();
